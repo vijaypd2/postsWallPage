@@ -29,6 +29,14 @@ app.get("/", function(req, res) {
   res.sendFile(__dirname + "/index.html");
 });
 
+app.get("/confessions", async(req, res) => {
+  const posts = await Post.find();
+  res.render('posts',{posts:posts});
+});
+
+app.get("/about", function(req, res){
+  res.sendFile(__dirname + "/public/about.html");
+});
 
 app.post('/', async(req, res) => {
     const post = new Post({
@@ -38,11 +46,9 @@ app.post('/', async(req, res) => {
 
     try {
         await post.save();
-        const posts = await Post.find();
-        res.send(posts);
+        posts = await Post.find();
+        res.render('posts',{posts:posts});
     } catch (err) {
         res.send(err);
     }
-
-    res.end();
 });
