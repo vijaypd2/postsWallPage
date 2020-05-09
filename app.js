@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({
 app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/public'));
 
-mongoose.connect('mongodb://localhost:27017/wallDB', {
+mongoose.connect('mongodb+srv://admin-vijay:vijay007@walldb-o6tp1.mongodb.net/wallDB', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
@@ -21,7 +21,11 @@ const postSchema = new mongoose.Schema({
 
 const Post = mongoose.model("Post", postSchema);
 
-app.listen(3000, function() {
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 3000;
+}
+app.listen(port, function() {
   console.log("Server Started at port 3000");
 });
 
