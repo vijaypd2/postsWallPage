@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({
 app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/public'));
 
-mongoose.connect('mongodb+srv://admin-vijay:vijay007@walldb-o6tp1.mongodb.net/wallDB', {
+mongoose.connect('mongodb+srv://admin-vijay:<pword>@walldb-o6tp1.mongodb.net/wallDB', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
